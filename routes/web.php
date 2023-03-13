@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ReservarCitaController;
-use App\Http\Controllers\CostumerController;
+use App\Http\Controllers\CitaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +17,11 @@ use App\Http\Controllers\CostumerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
  
-
-Route::resource('reservarcita', ReservarCitaController::class); 
-Route::resource('costumers', CostumerController::class);
+ 
+Route::resource('citas', CitaController::class); 
+Auth::routes();
+ 

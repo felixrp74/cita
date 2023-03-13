@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Costumer;
+use App\Models\Cita;
 use Illuminate\Http\Request;
 
 /**
- * Class CostumerController
+ * Class CitaController
  * @package App\Http\Controllers
  */
-class CostumerController extends Controller
+class CitaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +22,10 @@ class CostumerController extends Controller
      */
     public function index()
     {
-        $costumers = Costumer::paginate();
+        $citas = Cita::paginate();
 
-        return view('costumer.index', compact('costumers'))
-            ->with('i', (request()->input('page', 1) - 1) * $costumers->perPage());
+        return view('cita.index', compact('citas'))
+            ->with('i', (request()->input('page', 1) - 1) * $citas->perPage());
     }
 
     /**
@@ -31,8 +35,8 @@ class CostumerController extends Controller
      */
     public function create()
     {
-        $costumer = new Costumer();
-        return view('costumer.create', compact('costumer'));
+        $cita = new Cita();
+        return view('cita.create', compact('cita'));
     }
 
     /**
@@ -43,12 +47,12 @@ class CostumerController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Costumer::$rules);
+        request()->validate(Cita::$rules);
 
-        $costumer = Costumer::create($request->all());
+        $cita = Cita::create($request->all());
 
-        return redirect()->route('costumers.index')
-            ->with('success', 'Costumer created successfully.');
+        return redirect()->route('citas.index')
+            ->with('success', 'Cita created successfully.');
     }
 
     /**
@@ -59,9 +63,9 @@ class CostumerController extends Controller
      */
     public function show($id)
     {
-        $costumer = Costumer::find($id);
+        $cita = Cita::find($id);
 
-        return view('costumer.show', compact('costumer'));
+        return view('cita.show', compact('cita'));
     }
 
     /**
@@ -72,26 +76,26 @@ class CostumerController extends Controller
      */
     public function edit($id)
     {
-        $costumer = Costumer::find($id);
+        $cita = Cita::find($id);
 
-        return view('costumer.edit', compact('costumer'));
+        return view('cita.edit', compact('cita'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Costumer $costumer
+     * @param  Cita $cita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Costumer $costumer)
+    public function update(Request $request, Cita $cita)
     {
-        request()->validate(Costumer::$rules);
+        request()->validate(Cita::$rules);
 
-        $costumer->update($request->all());
+        $cita->update($request->all());
 
-        return redirect()->route('costumers.index')
-            ->with('success', 'Costumer updated successfully');
+        return redirect()->route('citas.index')
+            ->with('success', 'Cita updated successfully');
     }
 
     /**
@@ -101,9 +105,9 @@ class CostumerController extends Controller
      */
     public function destroy($id)
     {
-        $costumer = Costumer::find($id)->delete();
+        $cita = Cita::find($id)->delete();
 
-        return redirect()->route('costumers.index')
-            ->with('success', 'Costumer deleted successfully');
+        return redirect()->route('citas.index')
+            ->with('success', 'Cita deleted successfully');
     }
 }

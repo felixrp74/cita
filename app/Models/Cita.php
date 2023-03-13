@@ -5,26 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Costumer
+ * Class Cita
  *
  * @property $id
- * @property $name
- * @property $email
- * @property $phone
- * @property $address
+ * @property $asunto
+ * @property $nombre
+ * @property $fecha
+ * @property $hora
+ * @property $cargo
+ * @property $celular
+ * @property $estado
  * @property $created_at
  * @property $updated_at
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Costumer extends Model
+class Cita extends Model
 {
     
     static $rules = [
-		'name' => 'required',
-		'email' => 'required',
-		'phone' => 'required',
+		'hora' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,7 +35,7 @@ class Costumer extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','email','phone','address'];
+    protected $fillable = ['asunto','nombre','fecha','hora','cargo','celular','estado'];
 
 
 

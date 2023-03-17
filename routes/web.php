@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ReservarCitaController;
 use App\Http\Controllers\CitaController;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,4 +24,5 @@ Route::get('/', function () {
  
 Route::resource('citas', CitaController::class); 
 Auth::routes();
- 
+  
+Route::resource('home', HomeController::class); 

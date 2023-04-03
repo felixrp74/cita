@@ -7,15 +7,34 @@
             {!! $errors->first('asunto', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+
             {{ Form::label('nombre') }}
             {{ Form::text('nombre', $cita->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
+
         </div>
+        
         <div class="form-group">
+
             {{ Form::label('fecha') }}
             {{ Form::date('fecha', $cita->fecha, ['class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 'placeholder' => 'Fecha']) }}
             {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
+        
         </div>
+
+        <div class="form-group">
+
+
+            {{ Form::label('fecha') }}
+            {{ Form::date('fecha', $cita->fecha, [
+                'class' => 'form-control' . ($errors->has('fecha') ? ' is-invalid' : ''), 
+                'placeholder' => 'Fecha',
+                'min' => date('Y-m-d')
+            ]) }}
+            {!! $errors->first('fecha', '<div class="invalid-feedback">:message</div>') !!}
+
+        </div>
+
         <div class="form-group">
  
             {{ Form::label('hora') }}
